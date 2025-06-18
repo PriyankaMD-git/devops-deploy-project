@@ -1,2 +1,2 @@
 [docker]
-<DOCKER_VM_PUBLIC_IP> ansible_user=azureuser ansible_ssh_private_key_file=~/.ssh/id_rsa
+13.203.218.71 ansible_user=azureuser ansible_ssh_private_key_file=~/.ssh/id_rsa
