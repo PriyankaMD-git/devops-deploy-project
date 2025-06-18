@@ -1,0 +1,28 @@
+- name: Deploy Docker container
+  hosts: docker
+  become: yes
+  tasks:
+    - name: Install Docker (if not already installed)
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Pull NGINX image
+      docker_image:
+        name: nginx
+        source: pull
+
+    - name: Run NGINX container
+      docker_container:
+        name: webserver
+        image: nginx
+        state: started
+        ports:
+          - "80:80"
